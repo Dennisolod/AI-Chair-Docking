@@ -1,0 +1,41 @@
+[0.347s] Invoking command in '/home/solodod/aiChairDockingRepo/aiChairDocking/src/aiChairDocking_pkg': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/aiChairDocking_pkg build --build-base /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build install --record /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/install.log --single-version-externally-managed install_data
+[0.463s] running egg_info
+[0.463s] creating ../../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info
+[0.470s] writing ../../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/PKG-INFO
+[0.470s] writing dependency_links to ../../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/dependency_links.txt
+[0.471s] writing entry points to ../../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/entry_points.txt
+[0.471s] writing requirements to ../../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/requires.txt
+[0.471s] writing top-level names to ../../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/top_level.txt
+[0.471s] writing manifest file '../../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/SOURCES.txt'
+[0.486s] reading manifest file '../../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/SOURCES.txt'
+[0.486s] writing manifest file '../../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/SOURCES.txt'
+[0.486s] running build
+[0.486s] running build_py
+[0.487s] creating /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build
+[0.487s] creating /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build/lib
+[0.487s] creating /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg
+[0.487s] copying aiChairDocking_pkg/subscriber_python.py -> /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg
+[0.487s] copying aiChairDocking_pkg/publisher_python.py -> /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg
+[0.487s] copying aiChairDocking_pkg/__init__.py -> /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg
+[0.487s] running install
+[0.490s] running install_lib
+[0.498s] creating /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg
+[0.498s] copying /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg/__init__.py -> /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg
+[0.498s] copying /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg/subscriber_python.py -> /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg
+[0.498s] copying /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg/publisher_python.py -> /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg
+[0.498s] byte-compiling /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg/__init__.py to __init__.cpython-312.pyc
+[0.498s] byte-compiling /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg/subscriber_python.py to subscriber_python.cpython-312.pyc
+[0.498s] byte-compiling /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg/publisher_python.py to publisher_python.cpython-312.pyc
+[0.498s] running install_data
+[0.498s] creating /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/share/ament_index
+[0.499s] creating /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/share/ament_index/resource_index
+[0.499s] creating /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/share/ament_index/resource_index/packages
+[0.499s] copying resource/aiChairDocking_pkg -> /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/share/ament_index/resource_index/packages
+[0.499s] copying package.xml -> /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/share/aiChairDocking_pkg
+[0.499s] running install_egg_info
+[0.508s] Copying ../../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info to /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg-0.0.0-py3.12.egg-info
+[0.509s] running install_scripts
+[0.567s] Installing publisher script to /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/aiChairDocking_pkg
+[0.567s] Installing subscriber script to /home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/aiChairDocking_pkg
+[0.567s] writing list of installed files to '/home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/install.log'
+[0.579s] Invoked command in '/home/solodod/aiChairDockingRepo/aiChairDocking/src/aiChairDocking_pkg' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/solodod/aiChairDockingRepo/install/aiChairDocking_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/aiChairDocking_pkg build --build-base /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/build install --record /home/solodod/aiChairDockingRepo/build/aiChairDocking_pkg/install.log --single-version-externally-managed install_data
