@@ -1,0 +1,17 @@
+package.xml
+setup.cfg
+setup.py
+../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/PKG-INFO
+../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/SOURCES.txt
+../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/dependency_links.txt
+../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/entry_points.txt
+../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/requires.txt
+../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/top_level.txt
+../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/zip-safe
+aiChairDocking_pkg/__init__.py
+aiChairDocking_pkg/publisher_python.py
+aiChairDocking_pkg/subscriber_python.py
+resource/aiChairDocking_pkg
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

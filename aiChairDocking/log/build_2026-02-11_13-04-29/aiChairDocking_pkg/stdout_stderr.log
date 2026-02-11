@@ -1,0 +1,39 @@
+running egg_info
+creating ../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info
+writing ../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/PKG-INFO
+writing dependency_links to ../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/dependency_links.txt
+writing entry points to ../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/entry_points.txt
+writing requirements to ../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/requires.txt
+writing top-level names to ../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/top_level.txt
+writing manifest file '../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/SOURCES.txt'
+reading manifest file '../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/SOURCES.txt'
+writing manifest file '../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/solodod/aiChairDocking/build/aiChairDocking_pkg/build
+creating /home/solodod/aiChairDocking/build/aiChairDocking_pkg/build/lib
+creating /home/solodod/aiChairDocking/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg
+copying aiChairDocking_pkg/subscriber_python.py -> /home/solodod/aiChairDocking/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg
+copying aiChairDocking_pkg/__init__.py -> /home/solodod/aiChairDocking/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg
+copying aiChairDocking_pkg/publisher_python.py -> /home/solodod/aiChairDocking/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg
+running install
+running install_lib
+creating /home/solodod/aiChairDocking/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg
+copying /home/solodod/aiChairDocking/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg/subscriber_python.py -> /home/solodod/aiChairDocking/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg
+copying /home/solodod/aiChairDocking/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg/publisher_python.py -> /home/solodod/aiChairDocking/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg
+copying /home/solodod/aiChairDocking/build/aiChairDocking_pkg/build/lib/aiChairDocking_pkg/__init__.py -> /home/solodod/aiChairDocking/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg
+byte-compiling /home/solodod/aiChairDocking/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg/subscriber_python.py to subscriber_python.cpython-312.pyc
+byte-compiling /home/solodod/aiChairDocking/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg/publisher_python.py to publisher_python.cpython-312.pyc
+byte-compiling /home/solodod/aiChairDocking/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg/__init__.py to __init__.cpython-312.pyc
+running install_data
+creating /home/solodod/aiChairDocking/install/aiChairDocking_pkg/share/ament_index
+creating /home/solodod/aiChairDocking/install/aiChairDocking_pkg/share/ament_index/resource_index
+creating /home/solodod/aiChairDocking/install/aiChairDocking_pkg/share/ament_index/resource_index/packages
+copying resource/aiChairDocking_pkg -> /home/solodod/aiChairDocking/install/aiChairDocking_pkg/share/ament_index/resource_index/packages
+copying package.xml -> /home/solodod/aiChairDocking/install/aiChairDocking_pkg/share/aiChairDocking_pkg
+running install_egg_info
+Copying ../../build/aiChairDocking_pkg/aiChairDocking_pkg.egg-info to /home/solodod/aiChairDocking/install/aiChairDocking_pkg/lib/python3.12/site-packages/aiChairDocking_pkg-0.0.0-py3.12.egg-info
+running install_scripts
+Installing publisher script to /home/solodod/aiChairDocking/install/aiChairDocking_pkg/lib/aiChairDocking_pkg
+Installing subscriber script to /home/solodod/aiChairDocking/install/aiChairDocking_pkg/lib/aiChairDocking_pkg
+writing list of installed files to '/home/solodod/aiChairDocking/build/aiChairDocking_pkg/install.log'
