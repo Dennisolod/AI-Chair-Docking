@@ -10,4 +10,5 @@ To run the program on robotics lab machines:
 4. To run the project:
     - Open new terminal and navigate to root project directory
     - Then in the terminal type: “source ~/aiChairDocking/install/setup.bash”
-    - Ros2 run <name of package> <executable>
+    - Once this is done, type: ros2 run aiChairDocking_pkg publisher
+    - repeat steps in step 4, then only the last step is different. Replace 'publisher' with 'subscriber' in the last command
