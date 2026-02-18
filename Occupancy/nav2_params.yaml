@@ -1,0 +1,15 @@
+amcl:
+  ros__parameters:
+    robot_model_type: "differential"
+global_costmap:
+  global_costmap:
+    ros__parameters:
+      robot_radius: 0.1  # Makes the robot very small (10cm)
+      inflation_layer:
+        inflation_radius: 0.2  # Shrinks the safety buffer
+local_costmap:
+  local_costmap:
+    ros__parameters:
+      robot_radius: 0.1
+      inflation_layer:
+        inflation_radius: 0.2
