@@ -1,25 +1,31 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist, TransformStamped
+from nav_msgs.msg import Odometry
 from tf2_ros import TransformBroadcaster
+from rclpy.duration import Duration
 import math
 
 class DummyController(Node):
     def __init__(self):
         super().__init__('dummy_controller')
         self.br = TransformBroadcaster(self)
+        
+        # Publisher for AMCL/Nav2 to track movement
+        self.odom_pub = self.create_publisher(Odometry, '/odom', 10)
+        
+        # Subscriber for movement commands
         self.subscription = self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
         
-        # Internal state (Starting at x=0, y=3)
+        # Internal state
         self.x = 0.0
-        self.y = 3.0
+        self.y = 0.0
         self.th = 0.0
-        
         self.vx = 0.0
         self.vth = 0.0
         
         self.last_time = self.get_clock().now()
-        self.timer = self.create_timer(0.1, self.update_pose)
+        self.timer = self.create_timer(0.02, self.update_pose)
 
     def cmd_vel_callback(self, msg):
         self.vx = msg.linear.x
@@ -30,16 +36,12 @@ class DummyController(Node):
         dt = (curr_time - self.last_time).nanoseconds / 1e9
         self.last_time = curr_time
 
-        # Update position based on velocity
-        delta_x = self.vx * math.cos(self.th) * dt
-        delta_y = self.vx * math.sin(self.th) * dt
-        delta_th = self.vth * dt
+        # Calculate dead reckoning
+        self.x += self.vx * math.cos(self.th) * dt
+        self.y += self.vx * math.sin(self.th) * dt
+        self.th += self.vth * dt
 
-        self.x += delta_x
-        self.y += delta_y
-        self.th += delta_th
-
-        # Broadcast the 'odom' to 'base_link' transform
+        # 1. Broadcast TF (odom -> base_link) for RViz visualization
         t = TransformStamped()
         t.header.stamp = curr_time.to_msg()
         t.header.frame_id = 'odom'
@@ -49,6 +51,19 @@ class DummyController(Node):
         t.transform.rotation.z = math.sin(self.th / 2.0)
         t.transform.rotation.w = math.cos(self.th / 2.0)
         self.br.sendTransform(t)
+
+        # 2. Publish Odometry message for AMCL localization
+        odom = Odometry()
+        odom.header.stamp = curr_time.to_msg()
+        odom.header.frame_id = 'odom'
+        odom.child_frame_id = 'base_link'
+        odom.pose.pose.position.x = self.x
+        odom.pose.pose.position.y = self.y
+        odom.pose.pose.orientation.z = math.sin(self.th / 2.0)
+        odom.pose.pose.orientation.w = math.cos(self.th / 2.0)
+        odom.twist.twist.linear.x = self.vx
+        odom.twist.twist.angular.z = self.vth
+        self.odom_pub.publish(odom)
 
 def main():
     rclpy.init()
