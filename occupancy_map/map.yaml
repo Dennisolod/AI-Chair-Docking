@@ -1,6 +1,7 @@
 image: map.pgm
-resolution: 0.05  # Must match the 'Step' size used in CloudCompare
-origin: [-2.0, -2.0, 0.0] # X, Y, Yaw of the bottom-left corner
-occupied_thresh: 0.65
-free_thresh: 0.25
+mode: trinary
+resolution: 0.048
+origin: [-6.51200771, -3.01626778, 0.0]
 negate: 1
+occupied_thresh: 0.65
+free_thresh: 0.196
