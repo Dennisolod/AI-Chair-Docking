@@ -229,7 +229,7 @@ class FakeLidarFromMap(Node):
             return
 
         msg = LaserScan()
-        msg.header.stamp = self.get_clock().now().to_msg()
+        msg.header.stamp = tf_stamp
         msg.header.frame_id = scan_frame
 
         msg.angle_min = -math.pi
