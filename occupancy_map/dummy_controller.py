@@ -5,6 +5,8 @@ from nav_msgs.msg import Odometry
 from tf2_ros import TransformBroadcaster
 from rclpy.duration import Duration
 import math
+import time
+from builtin_interfaces.msg import Time
 
 class DummyController(Node):
     def __init__(self):
@@ -33,6 +35,9 @@ class DummyController(Node):
 
     def update_pose(self):
         curr_time = self.get_clock().now()
+        stamp = curr_time.to_msg()
+
+
         dt = (curr_time - self.last_time).nanoseconds / 1e9
         self.last_time = curr_time
 
@@ -43,7 +48,7 @@ class DummyController(Node):
 
         # 1. Broadcast TF (odom -> base_link) for RViz visualization
         t = TransformStamped()
-        t.header.stamp = curr_time.to_msg()
+        t.header.stamp = stamp
         t.header.frame_id = 'odom'
         t.child_frame_id = 'base_link'
         t.transform.translation.x = self.x
@@ -54,7 +59,7 @@ class DummyController(Node):
 
         # 2. Publish Odometry message for AMCL localization
         odom = Odometry()
-        odom.header.stamp = curr_time.to_msg()
+        odom.header.stamp = stamp
         odom.header.frame_id = 'odom'
         odom.child_frame_id = 'base_link'
         odom.pose.pose.position.x = self.x
