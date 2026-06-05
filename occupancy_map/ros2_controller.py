@@ -3,24 +3,17 @@ from rclpy.node import Node
 from geometry_msgs.msg import Twist, TransformStamped
 from nav_msgs.msg import Odometry
 from tf2_ros import TransformBroadcaster
-from rclpy.duration import Duration
 import math
-import time
-from builtin_interfaces.msg import Time
 
 class DummyController(Node):
     def __init__(self):
         super().__init__('dummy_controller')
         self.br = TransformBroadcaster(self)
-        
-        # Publisher for AMCL/Nav2 to track movement
-        self.odom_pub = self.create_publisher(Odometry, '/odom', 10)
-        
-        # Subscriber for movement commands
+        self.odom_pub = self.create_publisher(Odometry, 'wizard/odom', 10)
         self.subscription = self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
         
-        # Internal state
-        self.x = 0.0
+        # Initial Position
+        self.x = 1.7 
         self.y = 0.0
         self.th = 0.0
         self.vx = 0.0
@@ -35,39 +28,31 @@ class DummyController(Node):
 
     def update_pose(self):
         curr_time = self.get_clock().now()
-        stamp = curr_time.to_msg()
-
-
         dt = (curr_time - self.last_time).nanoseconds / 1e9
         self.last_time = curr_time
 
-        # Calculate dead reckoning
         self.x += self.vx * math.cos(self.th) * dt
         self.y += self.vx * math.sin(self.th) * dt
         self.th += self.vth * dt
 
-        # 1. Broadcast TF (odom -> base_link) for RViz visualization
         t = TransformStamped()
-        t.header.stamp = stamp
-        t.header.frame_id = 'odom'
-        t.child_frame_id = 'base_link'
+        t.header.stamp = curr_time.to_msg()
+        t.header.frame_id = 'wizard/odom'
+        t.child_frame_id = 'wizard/base_link'
         t.transform.translation.x = self.x
         t.transform.translation.y = self.y
         t.transform.rotation.z = math.sin(self.th / 2.0)
         t.transform.rotation.w = math.cos(self.th / 2.0)
         self.br.sendTransform(t)
 
-        # 2. Publish Odometry message for AMCL localization
         odom = Odometry()
-        odom.header.stamp = stamp
-        odom.header.frame_id = 'odom'
-        odom.child_frame_id = 'base_link'
+        odom.header.stamp = curr_time.to_msg()
+        odom.header.frame_id = 'wizard/odom'
+        odom.child_frame_id = 'wizard/base_link'
         odom.pose.pose.position.x = self.x
         odom.pose.pose.position.y = self.y
         odom.pose.pose.orientation.z = math.sin(self.th / 2.0)
         odom.pose.pose.orientation.w = math.cos(self.th / 2.0)
-        odom.twist.twist.linear.x = self.vx
-        odom.twist.twist.angular.z = self.vth
         self.odom_pub.publish(odom)
 
 def main():

@@ -53,6 +53,10 @@ bt_navigator:
   ros__parameters:
     use_sim_time: false
     bt_loop_duration: 50
+    default_bt_xml_filename: "navigate_to_pose_w_replanning_and_recovery.xml"
+    robot_base_frame: wizard/base_link  # <--- ADD THIS LINE
+    global_frame: map
+    odom_frame: wizard/odom
 planner_server:
   ros__parameters:
     expected_planner_frequency: 2.0
@@ -60,16 +64,17 @@ planner_server:
     planner_plugins:
     - GridBased
     GridBased:
-      plugin: nav2_navfn_planner/NavfnPlanner
+      plugin: nav2_navfn_planner::NavfnPlanner
       use_astar: true
       allow_unknown: true
 global_costmap:
   global_costmap:
     ros__parameters:
+      transform_tolerance: 1.0
       update_frequency: 0.5
       publish_frequency: 0.5
       global_frame: map
-      robot_base_frame: base_link
+      robot_base_frame: wizard/base_link
       use_sim_time: false
       robot_radius: 0.1
       plugins:
@@ -96,15 +101,16 @@ global_costmap:
       always_send_full_costmap: true
       inflation_layer:
         plugin: nav2_costmap_2d::InflationLayer
-        cost_scaling_factor: 3.0
-        inflation_radius: 0.35
+        cost_scaling_factor: 1.0
+        inflation_radius: 0.7
 local_costmap:
   local_costmap:
     ros__parameters:
+      transform_tolerance: 1.0
       update_frequency: 3.0
       publish_frequency: 2.0
-      global_frame: odom
-      robot_base_frame: base_link
+      global_frame: wizard/odom
+      robot_base_frame: wizard/base_link
       use_sim_time: false
       rolling_window: true
       width: 10
@@ -130,8 +136,8 @@ local_costmap:
           raytrace_min_range: 0.12
       inflation_layer:
         plugin: nav2_costmap_2d::InflationLayer
-        cost_scaling_factor: 3.0
-        inflation_radius: 0.35
+        cost_scaling_factor: 1.0
+        inflation_radius: 0.7
       always_send_full_costmap: true
 map_server:
   ros__parameters:
@@ -148,9 +154,9 @@ amcl:
     alpha3: 0.2
     alpha4: 0.2
     alpha5: 0.2
-    base_frame_id: base_link
+    base_frame_id: wizard/base_link
     global_frame_id: map
-    odom_frame_id: odom
+    odom_frame_id: wizard/odom
     scan_topic: scan
     laser_model_type: likelihood_field
     max_beams: 60
@@ -160,3 +166,23 @@ amcl:
     update_min_d: 0.25
     z_hit: 0.5
     z_rand: 0.5
+collision_monitor:
+  ros__parameters:
+    use_sim_time: false
+    base_frame_id: wizard/base_link
+    odom_frame_id: wizard/odom
+    transform_tolerance: 0.5
+    source_timeout: 5.0
+    stop_pub_timeout: 2.0
+    # This was the missing line causing the crash:
+    observation_sources: ["scan"]
+    scan:
+      type: "scan"
+      topic: "/scan"
+    polygons: ["FootprintPolygon"]
+    FootprintPolygon:
+      type: "polygon"
+      prediction_type: "robot"
+      enabled: true
+      action_type: "stop"
+      vertices: [0.3, 0.3, 0.3, -0.3, -0.3, -0.3, -0.3, 0.3] # Square around robot
